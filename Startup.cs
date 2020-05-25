@@ -34,6 +34,7 @@ namespace SimpleMultiPageApp
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
            services.AddRazorPages();
+            services.ConfigureApplicationCookieForApiControllerAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +53,7 @@ namespace SimpleMultiPageApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            env.ConfigureClientApp("ClientApp/dist");
 
             app.UseRouting();
 

@@ -17,4 +17,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ApiControllers\" />
+    <Folder Include="ClientApp\dist\" />
+  </ItemGroup>
+
 </Project>
