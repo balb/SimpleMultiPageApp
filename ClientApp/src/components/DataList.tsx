@@ -1,5 +1,8 @@
 import * as React from "react";
 
+declare function require(name: string): any;
+const styles = require('./DataList.module.css');
+
 export const DataList: React.FC = () => {
 
     const [authorized, setAuthorized] = React.useState(false);
@@ -21,7 +24,7 @@ export const DataList: React.FC = () => {
     }, []);
 
     return (<>
-        {authorized && <ul>
+        {authorized && <ul className={styles.foo}>
             {values.map(x => (<li key={x}>{x}</li>))}
         </ul>}
         {!authorized && <h1>Unauthorized!</h1>}
