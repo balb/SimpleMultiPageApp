@@ -3,7 +3,10 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
-  entry: './src/index.tsx',
+  entry: {
+    'admin': './src/admin.tsx',
+    'main': './src/index.tsx'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js'
