@@ -1,6 +1,6 @@
 import * as React from "react";
 
-declare function require(name: string): any;
+declare function require(name: string): Record<string, string>;
 const styles = require('./DataList.module.css');
 
 export const DataList: React.FC = () => {
@@ -13,11 +13,15 @@ export const DataList: React.FC = () => {
             .then(response => {
                 if (response.status == 200) {
                     setAuthorized(true);
-                    response.json().then(data => {
-                        setValues(data);
-                    });
+                    return response.json();
                 }
+
+                return null;
             })
+            .then(data => {
+                setValues(data);
+            })
+
             .catch(error => {
                 console.log("Error:", error);
             });
