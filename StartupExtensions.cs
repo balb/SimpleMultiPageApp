@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SimpleMultiPageApp
@@ -51,7 +51,18 @@ namespace SimpleMultiPageApp
         public static void ConfigureClientApp(this IWebHostEnvironment env, string root)
         {
             // https://github.com/aspnet/Mvc/issues/7459#issuecomment-371969518
-            var fileProviders = (env.WebRootFileProvider as CompositeFileProvider).FileProviders.ToList();
+            var fileProviders = new List<IFileProvider>();
+            switch (env.WebRootFileProvider)
+            {
+                case PhysicalFileProvider pfp:
+                    fileProviders.Add(pfp);
+                    break;
+
+                case CompositeFileProvider cfp:
+                    fileProviders.AddRange(cfp.FileProviders);
+                    break;
+            }
+
             fileProviders.Add(new PhysicalFileProvider(Path.Combine(env.ContentRootPath, root)));
             env.WebRootFileProvider = new CompositeFileProvider(fileProviders);
         }
