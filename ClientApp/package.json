@@ -10,21 +10,28 @@
     "clean": "rm dist/bundle.js",
     "watch": "webpack -d --mode development --watch",
     "build-dev": "webpack -d --mode development",
-    "build-prod": "webpack -p --mode production"
+    "build-prod": "webpack -p --mode production",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint-fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^3.5.3",
+    "eslint": "^7.1.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "mini-css-extract-plugin": "^0.9.0",
     "style-loader": "^1.2.1",
     "typescript": "^3.9.3",
-    "awesome-typescript-loader": "^5.2.1",
-    "mini-css-extract-plugin": "^0.9.0"
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }
