@@ -1,6 +1,8 @@
 import * as React from "react";
 
 declare function require(name: string): Record<string, string>;
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const styles = require('./DataList.module.css');
 
 export const DataList: React.FC = () => {
